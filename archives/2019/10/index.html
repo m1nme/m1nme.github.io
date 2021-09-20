@@ -4,7 +4,7 @@
 
 <head>
     
-    <title>分类：Writeup - M1N&#39;s Blog</title>
+    <title>文章归档：2019/10 - M1N&#39;s Blog</title>
     <meta charset="UTF-8">
     <meta name="description" content="M1N的博客">
     <meta name="keywords" content="">
@@ -16,17 +16,17 @@
     <meta name="description" content="M1N的博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="M1N&#39;s Blog">
-<meta property="og:url" content="http://blog.m1n.me/categories/Writeup/index.html">
+<meta property="og:url" content="http://blog.m1n.me/archives/2019/10/index.html">
 <meta property="og:site_name" content="M1N&#39;s Blog">
 <meta property="og:description" content="M1N的博客">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="M1N">
 <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1632154647151">
+    <link rel="stylesheet" href="/css/style.css?v=1632154647143">
      
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1632154647151">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1632154647143">
     
 <meta name="generator" content="Hexo 5.4.0"></head>
 
@@ -147,93 +147,51 @@
             <section class="nexmoe-posts">
     
     <div class="nexmoe-post">
-        <a href="/2021/09/20/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA%E5%9B%9B%E7%AC%94%E8%AE%B0/">
+        <a href="/2019/10/12/Sqli-labs/">
             
                 <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: NaN%;"> 
-                    <img data-src="https://iminx-1258939911.cos.ap-chengdu.myqcloud.com/%E5%B0%81%E9%9D%A2/7.jpg" data-sizes="auto" alt="红日靶场(四)笔记" class="lazyload">
-                    <h1>红日靶场(四)笔记</h1>
+                    <img data-src="https://iminx-1258939911.cos.ap-chengdu.myqcloud.com/%E5%B0%81%E9%9D%A2/9.jpg" data-sizes="auto" alt="Sqli-labs" class="lazyload">
+                    <h1>Sqli-labs</h1>
                 </div>
             
         </a>
 
         <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2021年09月20日</a>
-            <a><i class="nexmoefont icon-areachart"></i>1.3k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 6 分钟</a>
+            <a><i class="nexmoefont icon-calendar-fill"></i>2019年10月12日</a>
+            <a><i class="nexmoefont icon-areachart"></i>2.9k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 14 分钟</a>
         </div>
 
         <article>
             
-                <h1 id="红日靶场-四-笔记"><a href="#红日靶场-四-笔记" class="headerlink" title="红日靶场(四)笔记"></a>红日靶场(四)笔记</h1><h2 id="外网打点"><a href="#外网打点" class="headerlink"...
+                <h1 id="注入语句备忘"><a href="#注入语句备忘" class="headerlink" title="注入语句备忘"></a>注入语句备忘</h1><ol>
+<li>查库名：<code>select schema_name from information_schema.schemata</code></li>
+<li>查表名：<code>select table_name from information_schema.tables where table_schema=&#39;库名&#39;</code></li>
+<li>查列名：<code>select column_name from information_schema.columns where table_name=&#39;表名&#39;</code></li>
+<li>查数据：<code>select 列名 from 库名.表名</code>
             
         </article>
     </div>
     
     <div class="nexmoe-post">
-        <a href="/2020/02/05/hgame2020/">
+        <a href="/2019/10/12/upload-labs/">
             
                 <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: NaN%;"> 
-                    <img data-src="https://iminx-1258939911.cos.ap-chengdu.myqcloud.com/%E5%B0%81%E9%9D%A2/7.jpg" data-sizes="auto" alt="hgame2020" class="lazyload">
-                    <h1>hgame2020</h1>
+                    <img data-src="https://iminx-1258939911.cos.ap-chengdu.myqcloud.com/%E5%B0%81%E9%9D%A2/11.jpg" data-sizes="auto" alt="upload-labs" class="lazyload">
+                    <h1>upload-labs</h1>
                 </div>
             
         </a>
 
         <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2020年02月05日</a>
-            <a><i class="nexmoefont icon-areachart"></i>1.7k 字</a>
+            <a><i class="nexmoefont icon-calendar-fill"></i>2019年10月12日</a>
+            <a><i class="nexmoefont icon-areachart"></i>1.6k 字</a>
             <a><i class="nexmoefont icon-time-circle-fill"></i>大概 8 分钟</a>
         </div>
 
         <article>
             
-                <p><a target="_blank" rel="noopener" href="https://hgame.vidar.club/#/challenge/list">https://hgame.vidar.club/#/challenge/list</a></p>
-            
-        </article>
-    </div>
-    
-    <div class="nexmoe-post">
-        <a href="/2019/11/27/JarvisOj/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: NaN%;"> 
-                    <img data-src="https://iminx-1258939911.cos.ap-chengdu.myqcloud.com/%E5%B0%81%E9%9D%A2/6.jpg" data-sizes="auto" alt="JarvisOj" class="lazyload">
-                    <h1>JarvisOj</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2019年11月27日</a>
-            <a><i class="nexmoefont icon-areachart"></i>2.1k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 10 分钟</a>
-        </div>
-
-        <article>
-            
-                <p><a target="_blank" rel="noopener" href="https://www.jarvisoj.com/">https://www.jarvisoj.com/</a></p>
-            
-        </article>
-    </div>
-    
-    <div class="nexmoe-post">
-        <a href="/2019/11/20/BUUCTF-WP/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: NaN%;"> 
-                    <img data-src="https://iminx-1258939911.cos.ap-chengdu.myqcloud.com/%E5%B0%81%E9%9D%A2/2.jpg" data-sizes="auto" alt="BUUCTF-WP" class="lazyload">
-                    <h1>BUUCTF-WP</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2019年11月20日</a>
-            <a><i class="nexmoefont icon-areachart"></i>8.1k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 43 分钟</a>
-        </div>
-
-        <article>
-            
-                <p>BUUCTF部分题解<br>OJ链接<a target="_blank" rel="noopener" href="https://buuoj.cn/challenges">https://buuoj.cn/challenges</a></p>
+                <p>emmmm</p>
             
         </article>
     </div>
@@ -276,7 +234,7 @@
 
  
 
-<script async src="/js/app.js?v=1632154647152"></script>
+<script async src="/js/app.js?v=1632154647144"></script>
 
 
 
