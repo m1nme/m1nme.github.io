@@ -6,7 +6,6 @@
     
     <title>文件上传漏洞 - M1N&#39;s Blog</title>
     <meta charset="UTF-8">
-    <meta name="description" content="M1N的博客">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     
@@ -27,10 +26,10 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://iminx-1258939911.cos.ap-chengdu.myqcloud.com/%E5%86%85%E5%AE%B9/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/1.jpg">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1632155700145">
+    <link rel="stylesheet" href="/css/style.css?v=1641207574516">
      
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1632155700145">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1641207574516">
     
 <meta name="generator" content="Hexo 5.4.0"></head>
 
@@ -141,7 +140,7 @@
     
 </aside>
     <div class="nexmoe-copyright">
-        &copy; 2021 M1N
+        &copy; 2022 M1N
         Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
         & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
         
@@ -173,7 +172,7 @@
 <h2 id="常见的限制以及绕过"><a href="#常见的限制以及绕过" class="headerlink" title="常见的限制以及绕过"></a>常见的限制以及绕过</h2><h3 id="客户端验证（前端验证"><a href="#客户端验证（前端验证" class="headerlink" title="客户端验证（前端验证)"></a>客户端验证（前端验证)</h3><h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>就是通过前端代码来检查用户所上传的文件的扩展名，对于攻击者来说是极其容易绕过的，因此更多是用于防止用户错误上传文件类型的措施。</p>
 <h4 id="绕过"><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h4><ol>
 <li>先上传一个.gif或者.JPG之类的木马，突破前端验证后再通过抓包修改文件后缀名来实现绕过</li>
-<li>通过禁用或者删除JS来实现突破<h3 id="服务端验证"><a href="#服务端验证" class="headerlink" title="服务端验证"></a>服务端验证</h3><h4 id="MIME类型检测"><a href="#MIME类型检测" class="headerlink" title="MIME类型检测"></a>MIME类型检测</h4><h5 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h5>服务端通过检测MIME来限制文件上传的类型，其代码可能如下：<br><code>$_FILES[&#39;flie&#39;][&#39;type&#39;] == &#39;image/jpeg&#39;</code><h5 id="绕过-1"><a href="#绕过-1" class="headerlink" title="绕过"></a>绕过</h5>通过抓包修改Content-Type<br><img data-fancybox="gallery" data-sizes="auto" data-src="https://iminx-1258939911.cos.ap-chengdu.myqcloud.com/%E5%86%85%E5%AE%B9/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/1.jpg" alt="1.png" class="lazyload"><h4 id="检查文件内容"><a href="#检查文件内容" class="headerlink" title="检查文件内容"></a>检查文件内容</h4><h5 id="原理-2"><a href="#原理-2" class="headerlink" title="原理"></a>原理</h5>检查文件内容是否包含“&lt;? ”、“&lt;?= ”之类的关键字<h5 id="绕过-2"><a href="#绕过-2" class="headerlink" title="绕过"></a>绕过</h5>可以使用短tag绕过，例如<br><code>&lt;script language=&#39;pHp&#39;&gt;phpinfo();&lt;/script&gt;</code><h4 id="检查文件名"><a href="#检查文件名" class="headerlink" title="检查文件名"></a>检查文件名</h4><h5 id="原理-3"><a href="#原理-3" class="headerlink" title="原理"></a>原理</h5>检查文件名是否包含.php<h5 id="绕过-3"><a href="#绕过-3" class="headerlink" title="绕过"></a>绕过</h5></li>
+<li>通过禁用或者删除JS来实现突破<h3 id="服务端验证"><a href="#服务端验证" class="headerlink" title="服务端验证"></a>服务端验证</h3><h4 id="MIME类型检测"><a href="#MIME类型检测" class="headerlink" title="MIME类型检测"></a>MIME类型检测</h4><h5 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h5>服务端通过检测MIME来限制文件上传的类型，其代码可能如下：<br><code>$_FILES[&#39;flie&#39;][&#39;type&#39;] == &#39;image/jpeg&#39;</code><h5 id="绕过-1"><a href="#绕过-1" class="headerlink" title="绕过"></a>绕过</h5>通过抓包修改Content-Type<br><img src="https://iminx-1258939911.cos.ap-chengdu.myqcloud.com/%E5%86%85%E5%AE%B9/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/1.jpg" alt="1.png"><h4 id="检查文件内容"><a href="#检查文件内容" class="headerlink" title="检查文件内容"></a>检查文件内容</h4><h5 id="原理-2"><a href="#原理-2" class="headerlink" title="原理"></a>原理</h5>检查文件内容是否包含“&lt;? ”、“&lt;?= ”之类的关键字<h5 id="绕过-2"><a href="#绕过-2" class="headerlink" title="绕过"></a>绕过</h5>可以使用短tag绕过，例如<br><code>&lt;script language=&#39;pHp&#39;&gt;phpinfo();&lt;/script&gt;</code><h4 id="检查文件名"><a href="#检查文件名" class="headerlink" title="检查文件名"></a>检查文件名</h4><h5 id="原理-3"><a href="#原理-3" class="headerlink" title="原理"></a>原理</h5>检查文件名是否包含.php<h5 id="绕过-3"><a href="#绕过-3" class="headerlink" title="绕过"></a>绕过</h5></li>
 <li>大小写绕过，如.PhP</li>
 <li>使用其他可能被APache解析的后缀，如（.php4/.php5/.php7/.pht/.phtml）</li>
 <li>在Apache环境下上传.htaccess文件使其它后缀也被解析为php脚本执行。.htaccess文件内容为：<br><code>AddType application/x-http-php .jpg </code></li>
@@ -210,8 +209,8 @@
 <script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
 <script type="text/javascript">
     var gitalk = new Gitalk({
-        clientID: '80b2453b6d5f37ad6225',
-        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
+        clientID: '0afa1f5db694a7e0b7c4',
+        clientSecret: 'b28a65eee1cb9b256e44c7e8641aeb242cd400b8',
         id: window.location.pathname,
         repo: 'm1nme.github.io',
         owner: 'm1nme',
@@ -266,7 +265,7 @@
 
  
 
-<script async src="/js/app.js?v=1632155700146"></script>
+<script async src="/js/app.js?v=1641207574518"></script>
 
 
 
