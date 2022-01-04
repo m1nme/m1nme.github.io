@@ -5,8 +5,98 @@
         <link>http://blog.m1n.me</link>
         <description>M1N的博客</description>
         <language>zh-CN</language>
-        <pubDate>Tue, 04 Jan 2022 16:16:05 +0800</pubDate>
-        <lastBuildDate>Tue, 04 Jan 2022 16:16:05 +0800</lastBuildDate>
+        <pubDate>Tue, 04 Jan 2022 16:29:12 +0800</pubDate>
+        <lastBuildDate>Tue, 04 Jan 2022 16:29:12 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://blog.m1n.me/2022/01/04/%E5%88%A9%E7%94%A8%E4%BA%91%E5%87%BD%E6%95%B0%E6%90%AD%E5%BB%BAsocks5%E4%BB%A3%E7%90%86/</guid>
+            <title>利用云函数搭建socks5代理</title>
+            <link>http://blog.m1n.me/2022/01/04/%E5%88%A9%E7%94%A8%E4%BA%91%E5%87%BD%E6%95%B0%E6%90%AD%E5%BB%BAsocks5%E4%BB%A3%E7%90%86/</link>
+            <pubDate>Tue, 04 Jan 2022 16:29:12 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;记录一下如何用云函数搭建 socks 代理池，用于 hw 或渗透测试&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;h2 id=&#34;前言&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;可以搭建 http、https、socks 代理，这里选择 socks 代理比较方便，适用更多协议，也不需要配置证书即可适配 https&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;因为云函数最长超时时间为 15 分钟，所以 socks 连接最长持续 15 分钟，超时需重连&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;每个月都有免费额度，用完可以换个账户或者可以买云函数包，也不贵&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041635877.png&#34; alt=&#34;image-20211220210818106&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;准备&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#准备&#34;&gt;#&lt;/a&gt; 准备&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;某云账户&lt;/li&gt;
+&lt;li&gt;一台 VPS，必须 Linux，这里用的是 Ubuntu20.04&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/shimmeris/SCFProxy&#34;&gt;https://github.com/shimmeris/SCFProxy&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;配置某云函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#配置某云函数&#34;&gt;#&lt;/a&gt; 配置某云函数&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;云函数地址 https://console.cloud.tencent.com/scf/list?rid=1&amp;amp;ns=default，第一次使用需要授权&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;选择自定义创建、事件函数、代码部署、python3.6&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041637887.png&#34; alt=&#34;image-20211220211419782&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;先下载项目，把 / SCFProxy/SOCKS5/src/server.py 复制过来，IP 填 VPS 的 IP，端口自选 (记得开放，可以先 nc 监听一下是否能通)&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041637541.png&#34; alt=&#34;image-20211220211629211&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;高级配置，超时时间填最大&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041638497.png&#34; alt=&#34;image-20211220211901488&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;记得选公网访问（默认），别选固定出口 IP&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041638342.png&#34; alt=&#34;image-20211220211947391&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置好触发器选择 API 网关触发&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041638687.png&#34; alt=&#34;image-20211220212201492&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;复制好触发器的访问路径&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041638410.png&#34; alt=&#34;image-20211220212336201&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;配置vps&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#配置vps&#34;&gt;#&lt;/a&gt; 配置 VPS&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;环境需要 python3.8 及以上，版本过低需要升级，Ubuntu18.04 可以参考 (&lt;a href=&#34;https://app.yinxiang.com/fx/94afdeae-41b2-4854-8762-dc08f9b1feb3&#34;&gt;https://app.yinxiang.com/fx/94afdeae-41b2-4854-8762-dc08f9b1feb3&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git clone https://github.com/shimmeris/SCFProxy.git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cd ./SCFProxy/SOCKS5&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pip3 install -r requirements.txt&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cd ./src/socks_client&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;VPS 上运行 &lt;code&gt;python3 socks5.py -u &amp;quot;触发器URL&amp;quot; -bp 4455 -sp 4466 --user m1n --passwd m1n&lt;/code&gt;  注意这里的 4455 是云函数代码里配置的那个端口，4466 是接下来配置 socks 代理的端口&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;起飞~&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#起飞~&#34;&gt;#&lt;/a&gt; 起飞～&lt;/h2&gt;
+&lt;p&gt;因为浏览器貌似不支持 socks 的账号认证，这边让 burp 走 socks 代理，浏览器走 burp 代理&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;配置 burp，在 user options 处配置&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041638149.png&#34; alt=&#34;image-20211220215822772&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;浏览器正常走 burp 代理即可，可以看到 IP 已经是经过代理的 IP&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041638948.png&#34; alt=&#34;image-20211220215931018&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;倒霉的踩坑记录院长&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#倒霉的踩坑记录院长&#34;&gt;#&lt;/a&gt; 倒霉的踩坑记录 (@院长)&lt;/h2&gt;
+&lt;h3 id=&#34;ubuntupython369&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ubuntupython369&#34;&gt;#&lt;/a&gt; ubuntu+python3.6.9&lt;/h3&gt;
+&lt;p&gt;这是腾讯云 ubuntu 默认环境，自带 python3.6.9 环境，且于操作系统绑定，系统依赖于 python3.6.9，最开始用的 3.6.9 版本的 python 安装工具，一直到安装依赖的时候发现报错，找不到对应的版本  &lt;code&gt;pip3 install -r requirements.txt&lt;/code&gt;  这一步报错，报错截图当时没有存。&lt;/p&gt;
+&lt;h3 id=&#34;ubuntupython381&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ubuntupython381&#34;&gt;#&lt;/a&gt; ubuntu+python3.8.1&lt;/h3&gt;
+&lt;p&gt;这里发现问题后就去装了新版的 python，装了 3.8.1，原工具说明里明确说了要 3.8 及以上版本的 python3，新装的 python 环境变量设为了 python3, 这时米有卸载原先自带的 3.6.9，在保留旧版本的基础上将 python3 的优先级指向了 3.8.1，这一步设置未存记录，可自行百度，不复杂，就写下配置文件即可，但是到了安装依赖这一步还是一样的报错，这里和先前的报错一模一样，一开始怀疑是 pip3 的环境变量没有设，但是测试之后发现 pip3 也是新的&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041638871.png&#34; alt=&#34;image-20220104163441257&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;卸了 3.8.1 重装了一次，还是不行，于是气急败坏把旧版本的 3.6.9 卸载了，卸载之后又装了一次依赖，依然不行，这时候然后搞笑的事情就来了，apt-get 用不了了，还有一些其他命令都无法使用，一用就报错，好家伙，系统崩了（截图没存），没有办法，只能重置 vps，因为这台 vps 本来就没怎么装东西，所以还好，损失不大。&lt;/p&gt;
+&lt;h3 id=&#34;ubantu-python381环境变量python38&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ubantu-python381环境变量python38&#34;&gt;#&lt;/a&gt; ubantu + python3.8.1 (环境变量 python3.8)&lt;/h3&gt;
+&lt;p&gt;这里重置了 vps 之后，因为之前的环境是直接通过 apt-get 直接安装的 3.8.1，在装依赖的时候报错内容和 3.6.9 一模一样，怀疑环境变量冲突问题，于是转变思维，单独给 3.8.1 开一个环境变量，并且不通过 apt 安装，apt 安装会自动覆盖环境，所以这里选择了用源码编译的方法安装，具体可以百度，我这里安装完之后 python3.8.1 的环境变量是 python3.8，pip 也是 pip3.8，在这次安装依赖的时候终于一路顺风安装完，没有报错，然后在运行工具的时候报错了，最后查明是工具的命令参数写错了，这个由于当时找的教程最后运行部分的参数是错的导致我在这一步卡了很久，最后请教了同事解决的。&lt;/p&gt;
+&lt;h3 id=&#34;综上所述&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#综上所述&#34;&gt;#&lt;/a&gt; 综上所述&lt;/h3&gt;
+&lt;p&gt;这次也是吃到了 apt 的亏吧，平常用 apt 安装软件都习惯了，但是对于环境这类的东西非必要的情况下还是直接用源码编译的方式会好些，像 python 有多版本共存的需求的情况时，就可以用源码编译的方式。这里时 ubuntu 有 python 依赖，所以不能卸载 3.6.9，这也是学到了。在排查的过程中了解到同事用的 centos，于是自己在虚拟机里也试了 centos，过程很流畅，也许是没有自带 python 环境的原因，没有细察。&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://blog.m1n.me/2022/01/04/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%AE%80%E5%8D%95%E7%9A%84%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E4%BA%8B%E4%BB%B6%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/</guid>
             <title>记一次简单的蠕虫病毒事件应急响应</title>
