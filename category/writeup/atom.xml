@@ -3,13 +3,13 @@
     <id>http://blog.m1n.me</id>
     <title>M1N&#39;s Blog • Posts by &#34;writeup&#34; category</title>
     <link href="http://blog.m1n.me" />
-    <updated>2019-11-27T14:22:21.000Z</updated>
+    <updated>2021-11-16T14:22:21.000Z</updated>
     <entry>
-        <id>http://blog.m1n.me/2019/11/27/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(%E5%9B%9B)%E7%AC%94%E8%AE%B0/</id>
-        <title>JarvisOj</title>
-        <link rel="alternate" href="http://blog.m1n.me/2019/11/27/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(%E5%9B%9B)%E7%AC%94%E8%AE%B0/"/>
-        <content type="html">&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
-&lt;h1 id=&#34;红日靶场四笔记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#红日靶场四笔记&#34;&gt;#&lt;/a&gt; 红日靶场 (四) 笔记&lt;/h1&gt;
+        <id>http://blog.m1n.me/2021/11/16/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(%E5%9B%9B)%E7%AC%94%E8%AE%B0/</id>
+        <title>红日靶场(四)笔记</title>
+        <link rel="alternate" href="http://blog.m1n.me/2021/11/16/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA(%E5%9B%9B)%E7%AC%94%E8%AE%B0/"/>
+        <content type="html">&lt;p&gt;红日靶场四学习记录&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
 &lt;h2 id=&#34;前言&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h2&gt;
 &lt;p&gt;因为做的过程中，时间跨度比较大，前半段是打的公司的靶场，后半段自己搭建靶场，故 IP 有所变动。拓扑如下：&lt;br&gt;
 &lt;a href=&#34;http://vulnstack.qiyuanxuetang.net/vuln/detail/6/&#34;&gt;http://vulnstack.qiyuanxuetang.net/vuln/detail/6/&lt;/a&gt;&lt;/p&gt;
@@ -280,6 +280,6 @@
 &lt;p&gt;&lt;a href=&#34;http://www.hackdig.com/09/hack-492089.htm&#34;&gt;http://www.hackdig.com/09/hack-492089.htm&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/zy15667076526/article/details/116059592&#34;&gt;https://blog.csdn.net/zy15667076526/article/details/116059592&lt;/a&gt;&lt;/p&gt;
 </content>
-        <updated>2019-11-27T14:22:21.000Z</updated>
+        <updated>2021-11-16T14:22:21.000Z</updated>
     </entry>
 </feed>
