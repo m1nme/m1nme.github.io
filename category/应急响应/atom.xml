@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://blog.m1n.me</id>
+    <title>M1N&#39;s Blog • Posts by &#34;应急响应&#34; category</title>
+    <link href="http://blog.m1n.me" />
+    <updated>2022-01-04T08:16:05.000Z</updated>
+    <entry>
+        <id>http://blog.m1n.me/2022/01/04/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%AE%80%E5%8D%95%E7%9A%84%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E4%BA%8B%E4%BB%B6%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/</id>
+        <title>记一次简单的蠕虫病毒事件应急响应</title>
+        <link rel="alternate" href="http://blog.m1n.me/2022/01/04/%E8%AE%B0%E4%B8%80%E6%AC%A1%E7%AE%80%E5%8D%95%E7%9A%84%E8%A0%95%E8%99%AB%E7%97%85%E6%AF%92%E4%BA%8B%E4%BB%B6%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/"/>
+        <content type="html">&lt;h2 id=&#34;背景描述&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#背景描述&#34;&gt;#&lt;/a&gt; 背景描述&lt;/h2&gt;
+&lt;p&gt;某日接到某省政务外网安全监管平台通报，某单位的一个 IP 发生 Parite 蠕虫病毒活动事件，其对政务外网内其他地市主机发起 SMB 扫描攻击。&lt;/p&gt;
+&lt;span id=&#34;more&#34;&gt;&lt;/span&gt;
+&lt;h2 id=&#34;事件分析处置&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#事件分析处置&#34;&gt;#&lt;/a&gt; 事件分析处置&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;与客户沟通，被通报的 IP 为政务网的出口 IP，不属于某一台服务器&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;网络环境中具有上网行为管理系统，通过排查筛选，定位到一共有四台主机向其他主机的 445 端口发送大量请求&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041620353.png&#34; alt=&#34;image-20211116165756380&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;与客户沟通了解到对应的四台主机为个人 PC，不是服务器，远程登录到其中的一台主机上&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;上机发现客户对接人员很贴心的帮我们用杀毒软件进行了排查&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041620817.png&#34; alt=&#34;image-20211116165949834&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可以看到排查到的风险文件为 C:\Windows\svchost.exe，参考文章 https://xz.aliyun.com/t/8095#toc-4 可以知道，通常在攻击者使用创建服务来实现权限维持的时候，可以把恶意进程隐藏在 svchost 进程中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过工具检查端口使用情况，发现进程 ID 为 2824 的程序向外部主机 445 端口发起大量 TCP 请求&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041620314.png&#34; alt=&#34;image-20211116170723354&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过任务管理器查找对于的进程，发现其服务名为 mssecsvc2.0&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041620578.png&#34; alt=&#34;image-20211116171005724&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;定位到恶意文件为 C:\Windows\mssecsvc.exe 文件&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041620248.png&#34; alt=&#34;image-20211116171100384&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041620281.png&#34; alt=&#34;image-20211116171221677&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过搜索引擎收集此恶意文件的相关信息，得到其相关描述：&lt;/p&gt;
+&lt;p&gt;mssecsvc.exe 文件为通过利用永恒之蓝漏洞的勒索病毒，原病毒文件 mssecsvc.exe 会释放并执行 tasksche.exe 文件，然后检查 kill switch 域名。之后它会创建 mssecsvc2.0 服务。该服务会使用与初次执行不同的入口点执行 mssecsvc.exe 文件。第二次执行会检查被感染电脑的 IP 地址，并尝试联接到相同子网内每个 IP 地址的 TCP 445 端口。当恶意软件成功攻击并联接到一台电脑时，将会建立联接并传输数据，不断进行扩散攻击。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过排查发现 C:\Windows 目录下的确存在 tasksche.exe 文件&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041620466.png&#34; alt=&#34;image-20211116172028785&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过排查如系统账号、启动项、计划任务、服务等攻击者常用于权限维持手段的敏感配置，发现 mssecsvc.exe 运行于 svchost.exe 进程下，这与步骤 4 中的杀毒软件排查相互印证，而运行于 svchost.exe 的行为常见于攻击者通过注册系统服务来实现自启动恶意文件的目的&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041620529.png&#34; alt=&#34;image-20211116172256162&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;排查系统的自启动服务项，发现确实存在自启动 mssecsvc2.0 服务的服务项&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041620000.png&#34; alt=&#34;image-20211116172406701&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;结合搜索引擎中关于 mssecsvc.exe 病毒的描述是通过永恒之蓝漏洞进行传播，利用 360NSA 武器库免疫工具对主机是否存在永恒之蓝漏洞进行排查，发现系统存在多个包括永恒之蓝在内的主机漏洞&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041620955.png&#34; alt=&#34;image-20211116172422895&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;排查主机端口开启状态，发现该主机的 445 端口对外开放&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041621402.png&#34; alt=&#34;image-20211116172445687&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通过对主机上的病毒样本进行采样，上传至分析系统进行检测，其主要的恶意行为如下：&lt;/p&gt;
+&lt;p&gt;（1）通过创建服务实现自启动，这与步骤 7、8 所排查到的行为相互印证&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041621665.png&#34; alt=&#34;image-20211116172532390&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;（2）&lt;a href=&#34;http://xn--www-633e.iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea.com&#34;&gt;向 www.iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea.com&lt;/a&gt;、104.17.244.81 发送请求&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041621059.png&#34; alt=&#34;image-20211116172614229&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041621514.png&#34; alt=&#34;image-20211116172619205&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;通过威胁情报可以确定对应 IP、域名为常见勒索病毒对应的恶意域名&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041621899.png&#34; alt=&#34;image-20211116172640677&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;C:%5CUsers%5CM1N%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20211116172648753.png&#34; alt=&#34;image-20211116172648753&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;继续对剩余的三台主机进行排查，发现大致情况都一致&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;排查结论&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#排查结论&#34;&gt;#&lt;/a&gt; 排查结论&lt;/h2&gt;
+&lt;p&gt;经过详细检测分析，判断该单位出口 IP 为 xxx.xxx.xxx.xxx 的内网网段中，有四台主机感染了 Wannacry 系列勒索病毒家族的蠕虫病毒。&lt;/p&gt;
+&lt;p&gt;此病毒通过利用永恒之蓝漏洞进行感染传播，当某台主机存在永恒之蓝漏洞被攻击感染上病毒后，将变成新的攻击机，对内外网中的其他主机进行攻击达到扩散传播的目的。此行为被政务外网安全监管平台捕获，触发报警。&lt;/p&gt;
+&lt;h2 id=&#34;修复建议&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#修复建议&#34;&gt;#&lt;/a&gt; 修复建议&lt;/h2&gt;
+&lt;p&gt;1、 通过安装系统补丁（补丁地址见第 7 点），或 360NSA 武器免疫工具（下载地址：&lt;a href=&#34;http://dl.360safe.com/nsa/nsatool.exe%EF%BC%89%E4%BF%AE%E5%A4%8D%E2%80%9C%E6%B0%B8%E6%81%92%E4%B9%8B%E8%93%9D%E2%80%9D%E6%BC%8F%E6%B4%9E%E3%80%82&#34;&gt;http://dl.360safe.com/nsa/nsatool.exe）修复 “永恒之蓝” 漏洞。&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2、 添加入站规则，建议关闭除业务外不必要的端口 445、135、137、138、139 端口&lt;/p&gt;
+&lt;p&gt;3、 断网并对系统全部磁盘进行病毒木马扫描，以清除蠕虫病毒，并观察一段时间，若又发现蠕虫病毒需保存备份重要文件并重装系统。&lt;/p&gt;
+&lt;p&gt;4、 开启服务的日志记录功能，及时安装并更新相关补丁。&lt;/p&gt;
+&lt;p&gt;5、 对主机系统安装杀毒软件。&lt;/p&gt;
+&lt;p&gt;6、 定期查看系统安全日志，并且使用杀毒软件定期对系统进行体检。&lt;/p&gt;
+&lt;p&gt;7、 下载补丁地址 &lt;a href=&#34;http://www.catalog.update.microsoft.com/search.aspx?q=%E8%A1%A5%E4%B8%81%E7%BC%96%E5%8F%B7&#34;&gt;http://www.catalog.update.microsoft.com/search.aspx?q = 补丁编号&lt;/a&gt; （根据自己的系统版本在下图中查找补丁编号）&lt;/p&gt;
+&lt;p&gt;&lt;img data-fancybox=&#34;gallery&#34; data-sizes=&#34;auto&#34; data-src=&#34;https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202201041621577.png&#34; alt=&#34;image-20211116172902197&#34; class=&#34;lazyload&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;reference&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#reference&#34;&gt;#&lt;/a&gt; Reference&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://xz.aliyun.com/t/8095#toc-4&#34;&gt;https://xz.aliyun.com/t/8095#toc-4&lt;/a&gt;&lt;/p&gt;
+</content>
+        <updated>2022-01-04T08:16:05.000Z</updated>
+    </entry>
+</feed>
