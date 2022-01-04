@@ -53,7 +53,6 @@
   color: #e8e6e3 !important;
 }
 .gt-comment-content:hover {
-  -webkit-box-shadow: 0 0.625em 3.75em 0 #1e2122 !important;
   box-shadow: 0 0.625em 3.75em 0 #1e2122 !important;
 }
 .gt-container .gt-popup {
@@ -90,7 +89,8 @@
 }
 .gitment-editor-main .gitment-editor-header .gitment-editor-tabs .gitment-editor-tab {
   color: #a8a095 !important;
-  text-decoration-color: initial !important;
+  -webkit-text-decoration-color: initial !important;
+          text-decoration-color: initial !important;
   background-color: transparent !important;
   border-color: transparent !important;
   outline-color: initial !important;
@@ -230,7 +230,6 @@ article > ol > li::before {
 article > table {
   color: #aca49a !important;
   text-align: center;
-  -webkit-box-shadow: 0 0 0 1px #222426;
   box-shadow: 0 0 0 1px #222426;
   display: inline-block !important;
   margin: auto;

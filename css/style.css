@@ -133,9 +133,10 @@ article p {
 }
 article code {
   background-color: rgba(27,31,35,0.05);
-  border-radius: 10px;
+  border-radius: 6px;
   font-size: 85%;
   padding: 0.2em 0.4em;
+  font-family: Consolas;
 }
 article code::-webkit-scrollbar {
   width: 10px;
@@ -159,7 +160,6 @@ article code::-webkit-scrollbar-thumb {
 article pre {
   border-radius: 13px;
   overflow: hidden;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
   padding: 15px 6px 15px 0;
@@ -182,7 +182,6 @@ article pre:after {
   top: 0;
   left: 12px;
   margin-top: 12px;
-  -webkit-box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
   box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
 }
 article pre code {
@@ -207,7 +206,6 @@ article pre code:after {
   background: #282c34;
 }
 article a {
-  -webkit-transition: color 0.35s ease-out;
   transition: color 0.35s ease-out;
   color: #ff4e6a;
   text-decoration: none;
@@ -268,7 +266,8 @@ article > table.nexmoe-album td a:after {
 article > table.nexmoe-album img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .justified-gallery {
   margin: -10px;
@@ -572,7 +571,6 @@ font.douyin {
   animation: shake-it 0.5s reverse infinite cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 .aplayer {
-  -webkit-box-shadow: 0 0 0 1px #eee !important;
   box-shadow: 0 0 0 1px #eee !important;
   border-radius: 10px !important;
   margin: 25px 0 !important;
@@ -595,9 +593,7 @@ font.douyin {
   height: 12px !important;
   width: 12px !important;
   right: 3px !important;
-  -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.18) !important;
   box-shadow: 0 0 5px 0 rgba(0,0,0,0.18) !important;
-  -webkit-transition: all 0.35s ease-out;
   transition: all 0.35s ease-out;
 }
 .aplayer .aplayer-info .aplayer-controller .aplayer-volume-wrap .aplayer-volume-bar-wrap .aplayer-volume-bar,
@@ -633,9 +629,6 @@ font.douyin {
 .justified-gallery > a > .jg-caption:after,
 .justified-gallery > div > .jg-caption:after,
 .justified-gallery > figure > .jg-caption:after {
-  background-image: -moz-linear-gradient(to top, rgba(16,16,16,0.35) 25%, rgba(16,16,16,0) 100%);
-  background-image: -webkit-linear-gradient(to top, rgba(16,16,16,0.35) 25%, rgba(16,16,16,0) 100%);
-  background-image: -ms-linear-gradient(to top, rgba(16,16,16,0.35) 25%, rgba(16,16,16,0) 100%);
   background-image: linear-gradient(to top, rgba(16,16,16,0.35) 25%, rgba(16,16,16,0) 100%);
   -moz-pointer-events: none;
   -webkit-pointer-events: none;
@@ -682,9 +675,6 @@ article.nexmoe-py ul li > a {
   position: relative;
 }
 article.nexmoe-py ul li > a:before {
-  background-image: -moz-linear-gradient(to top, rgba(16,16,16,0.35) 25%, rgba(16,16,16,0) 100%);
-  background-image: -webkit-linear-gradient(to top, rgba(16,16,16,0.35) 25%, rgba(16,16,16,0) 100%);
-  background-image: -ms-linear-gradient(to top, rgba(16,16,16,0.35) 25%, rgba(16,16,16,0) 100%);
   background-image: linear-gradient(to top, rgba(16,16,16,0.35) 25%, rgba(16,16,16,0) 100%);
   -moz-pointer-events: none;
   -webkit-pointer-events: none;
@@ -704,7 +694,6 @@ article.nexmoe-py ul li > a:before {
 article.nexmoe-py ul li > a::after {
   font-size: 13px;
   color: #fff;
-  -webkit-transition: none;
   transition: none;
   content: attr(title);
   display: block;
@@ -886,8 +875,6 @@ body {
   -webkit-border-radius: 80px;
   -moz-border-radius: 80px;
   box-shadow: inset 0 -1px 0 #333 sf;
-  -webkit-transition: -webkit-transform 1.5s ease-out;
-  -moz-transition: -moz-transform 1.5s ease-out;
   transition: transform 1.5s ease-out;
 }
 #nexmoe-header .nexmoe-avatar {
@@ -908,13 +895,9 @@ body {
 #nexmoe-header .nexmoe-count {
   padding: 0 30px;
   margin-bottom: 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 #nexmoe-header .nexmoe-count div {
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
   flex: 1;
   text-align: center;
   color: #a3a8ae;
@@ -1025,7 +1008,8 @@ body {
 }
 #nexmoe-header .nexmoe-widget-wrap .tagcloud {
   padding: 10px;
-  padding-bottom: 5px;
+  padding-bottom: 6px;
+  padding-top: 11px;
 }
 #nexmoe-header .nexmoe-widget-wrap .tagcloud a {
   border-radius: 13px;
@@ -1133,7 +1117,8 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 100%;
   height: 100%;
 }
@@ -1157,9 +1142,6 @@ body {
   padding: 25px;
 }
 #nexmoe-content .nexmoe-post .nexmoe-post-cover h1:after {
-  background-image: -moz-linear-gradient(to top, rgba(16,16,16,0.35) 25%, rgba(16,16,16,0) 100%);
-  background-image: -webkit-linear-gradient(to top, rgba(16,16,16,0.35) 25%, rgba(16,16,16,0) 100%);
-  background-image: -ms-linear-gradient(to top, rgba(16,16,16,0.35) 25%, rgba(16,16,16,0) 100%);
   background-image: linear-gradient(to top, rgba(16,16,16,0.35) 25%, rgba(16,16,16,0) 100%);
   -moz-pointer-events: none;
   -webkit-pointer-events: none;
@@ -1284,13 +1266,7 @@ body {
   text-align: right;
 }
 .nexmoe-valign {
-  display: -webkit-box !important;
-  display: -webkit-flex !important;
-  display: -ms-flexbox !important;
   display: flex !important;
-  -webkit-box-align: center !important;
-  -webkit-align-items: center !important;
-  -ms-flex-align: center !important;
   align-items: center !important;
   height: 100%;
 }
@@ -1442,35 +1418,7 @@ photos img {
   color: #fff;
   background-color: rgba(144,144,255,0.7);
 }
-@-moz-keyframes shake-it {
-  0% {
-    text-shadow: 0 0 rgba(0,255,255,0.5), 0 0 rgba(255,0,0,0.5);
-  }
-  25% {
-    text-shadow: -1px 0 rgba(0,255,255,0.5), 1px 0 rgba(255,0,0,0.5);
-  }
-  50% {
-    text-shadow: -3px 0 rgba(0,255,255,0.5), 1px 0 rgba(255,0,0,0.5);
-  }
-  100% {
-    text-shadow: 1px 0 rgba(0,255,255,0.5), 3px 0 rgba(255,0,0,0.5);
-  }
-}
 @-webkit-keyframes shake-it {
-  0% {
-    text-shadow: 0 0 rgba(0,255,255,0.5), 0 0 rgba(255,0,0,0.5);
-  }
-  25% {
-    text-shadow: -1px 0 rgba(0,255,255,0.5), 1px 0 rgba(255,0,0,0.5);
-  }
-  50% {
-    text-shadow: -3px 0 rgba(0,255,255,0.5), 1px 0 rgba(255,0,0,0.5);
-  }
-  100% {
-    text-shadow: 1px 0 rgba(0,255,255,0.5), 3px 0 rgba(255,0,0,0.5);
-  }
-}
-@-o-keyframes shake-it {
   0% {
     text-shadow: 0 0 rgba(0,255,255,0.5), 0 0 rgba(255,0,0,0.5);
   }

